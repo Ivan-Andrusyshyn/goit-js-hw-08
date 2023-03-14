@@ -3,7 +3,7 @@ import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 const input = document.querySelector('input[autofocus]');
 const textArea = document.querySelector('textarea');
-const btnSubmit = document.querySelector('button');
+
 const STORAGE_KEY = 'feedback-form-state';
 const dataForm = {};
 importText();
