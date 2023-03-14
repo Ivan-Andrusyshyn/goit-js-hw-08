@@ -3,18 +3,18 @@ import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 const input = document.querySelector('input[autofocus]');
 const textArea = document.querySelector('textarea');
-
+const btnSubmit = document.querySelector('button');
 const STORAGE_KEY = 'feedback-form-state';
 const dataForm = {};
 importText();
 
 form.addEventListener('input', throttle(saveFormData, 500));
 form.addEventListener('submit', makeFormSubmit);
-
-function makeFormSubmit(evt) {
-  evt.preventDefoult();
-  evt.currentTarget.reset();
+function makeFormSubmit(event) {
+  event.preventDefault();
+  console.log(dataForm);
   localStorage.removeItem(STORAGE_KEY);
+  event.currentTarget.reset();
 }
 
 function saveFormData(e) {
