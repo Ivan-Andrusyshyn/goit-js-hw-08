@@ -22,7 +22,6 @@ function makeFormSubmit(event) {
     event.currentTarget.reset();
   }
 }
-let data;
 function saveFormData(e) {
   dataForm[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
@@ -34,8 +33,8 @@ function importText() {
   if (makeFormValue) {
     dataForm.email = b.email;
     dataForm.message = b.message;
-    console.log(dataForm);
     textArea.value = b.message ? b.message : '';
     input.value = b.email ? b.email : '';
   }
 }
+console.log(dataForm);
