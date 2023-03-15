@@ -6,7 +6,11 @@ const textArea = document.querySelector('textarea');
 
 const STORAGE_KEY = 'feedback-form-state';
 
-const dataForm = {};
+const dataForm = {
+  email: '',
+  message: '',
+};
+console.log(dataForm);
 importText();
 
 form.addEventListener('input', throttle(saveFormData, 500));
@@ -37,8 +41,8 @@ function importText() {
   if (makeFormValue) {
     dataForm.email = b.email;
     dataForm.message = b.message;
-    textArea.value = dataForm.message ? dataForm.message : '';
-    input.value = dataForm.email ? dataForm.email : '';
+    textArea.value = dataForm.message;
+    input.value = dataForm.email;
   }
 }
 console.log(dataForm);
