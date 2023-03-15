@@ -5,12 +5,13 @@ const input = document.querySelector('input[autofocus]');
 const textArea = document.querySelector('textarea');
 
 const STORAGE_KEY = 'feedback-form-state';
-const dataForm = {};
 
+const dataForm = {};
 importText();
 
 form.addEventListener('input', throttle(saveFormData, 500));
 form.addEventListener('submit', makeFormSubmit);
+
 function makeFormSubmit(event) {
   event.preventDefault();
   if (input.value == '' || textArea.value == '') {
@@ -21,7 +22,7 @@ function makeFormSubmit(event) {
     event.currentTarget.reset();
   }
 }
-
+let data;
 function saveFormData(e) {
   dataForm[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
@@ -31,7 +32,10 @@ function importText() {
   const makeFormValue = localStorage.getItem(STORAGE_KEY);
   const b = JSON.parse(makeFormValue);
   if (makeFormValue) {
-    textArea.value = b.message;
-    input.value = b.email;
+    dataForm.email = b.email;
+    dataForm.message = b.message;
+    console.log(dataForm);
+    textArea.value = b.message ? b.message : '';
+    input.value = b.email ? b.email : '';
   }
 }
