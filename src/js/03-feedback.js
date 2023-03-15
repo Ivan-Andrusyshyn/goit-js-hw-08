@@ -8,8 +8,6 @@ const STORAGE_KEY = 'feedback-form-state';
 const dataForm = {};
 
 importText();
-const makeFormValue = localStorage.getItem(STORAGE_KEY);
-const b = JSON.parse(makeFormValue);
 
 form.addEventListener('input', throttle(saveFormData, 500));
 form.addEventListener('submit', makeFormSubmit);
@@ -29,7 +27,9 @@ function saveFormData(e) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
 }
 
-function importText(makeFormValue, b) {
+function importText() {
+  const makeFormValue = localStorage.getItem(STORAGE_KEY);
+  const b = JSON.parse(makeFormValue);
   if (makeFormValue) {
     textArea.value = b.message;
     input.value = b.email;
