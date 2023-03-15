@@ -18,10 +18,10 @@ function makeFormSubmit(event) {
     alert('Please, fill all of fields !');
   } else {
     console.log(dataForm);
-    localStorage.removeItem(STORAGE_KEY);
-    event.currentTarget.reset();
     dataForm.message = '';
     dataForm.email = '';
+    localStorage.removeItem(STORAGE_KEY);
+    event.currentTarget.reset();
   }
 }
 importText();
@@ -37,8 +37,8 @@ function importText() {
   if (makeFormValue) {
     dataForm.email = b.email;
     dataForm.message = b.message;
-    textArea.value = dataForm.message;
-    input.value = dataForm.email;
+    textArea.value = dataForm.message ? dataForm.message : '';
+    input.value = dataForm.email ? dataForm.email : '';
   }
 }
 console.log(dataForm);
