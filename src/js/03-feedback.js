@@ -31,10 +31,10 @@ function importText() {
   const makeFormValue = localStorage.getItem(STORAGE_KEY);
   const b = JSON.parse(makeFormValue);
   if (makeFormValue) {
-    dataForm.email = b.email;
-    dataForm.message = b.message;
-    textArea.value = b.message ? b.message : '';
-    input.value = b.email ? b.email : '';
+    dataForm.email = b.email ? b.email : '';
+    dataForm.message = b.message ? b.message : '';
+    textArea.value = dataForm.message;
+    input.value = dataForm.email;
   }
 }
 console.log(dataForm);
