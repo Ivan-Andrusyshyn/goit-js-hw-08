@@ -20,8 +20,12 @@ function makeFormSubmit(event) {
     console.log(dataForm);
     localStorage.removeItem(STORAGE_KEY);
     event.currentTarget.reset();
+    dataForm.message = '';
+    dataForm.email = '';
   }
 }
+importText();
+
 function saveFormData(e) {
   dataForm[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
@@ -31,8 +35,8 @@ function importText() {
   const makeFormValue = localStorage.getItem(STORAGE_KEY);
   const b = JSON.parse(makeFormValue);
   if (makeFormValue) {
-    dataForm.email = b.email ? b.email : '';
-    dataForm.message = b.message ? b.message : '';
+    dataForm.email = b.email;
+    dataForm.message = b.message;
     textArea.value = dataForm.message;
     input.value = dataForm.email;
   }
