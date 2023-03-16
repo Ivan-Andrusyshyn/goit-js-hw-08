@@ -12,8 +12,8 @@ player.on('timeupdate', throttle(timeUpdate, 1000));
 
 const currentTime = localStorage.getItem(CURRENT_PLAY);
 const timeSt = JSON.parse(currentTime);
-console.log(timeSt);
 if (timeSt) {
+  console.log(timeSt);
   player
     .setCurrentTime(timeSt.seconds || 0)
     .then(function (seconds) {
